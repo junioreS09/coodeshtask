@@ -1,0 +1,76 @@
+﻿<Window x:Class="WpfApp.Views.PessoaView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp.Views"
+        mc:Ignorable="d"
+        Title="Cadastro de Pessoas" Height="600" Width="900">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />  <!-- Filtros -->
+            <RowDefinition Height="Auto" />  <!-- Formulário -->
+            <RowDefinition Height="*" />     <!-- Grid -->
+        </Grid.RowDefinitions>
+
+        <!-- SEÇÃO 1: FILTROS -->
+        <GroupBox Header="Filtros" Grid.Row="0" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Nome:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox Width="150" Margin="0,0,10,0" Text="{Binding NomeFiltro, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="CPF:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox Width="130" Margin="0,0,10,0" Text="{Binding CpfFiltro, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Content="Buscar" Width="70" Click="BtnBuscar_Click"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- SEÇÃO 2: FORMULÁRIO -->
+        <GroupBox Header="Dados da Pessoa" Grid.Row="1" Margin="0,0,0,10">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Nome:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,5,5"/>
+                <TextBox Grid.Row="0" IsEnabled="{Binding FormularioHabilitado}" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,5" Text="{Binding Nome}"/>
+
+                <TextBlock Text="CPF:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,5,5"/>
+                <TextBox Grid.Row="1" IsEnabled="{Binding FormularioHabilitado}" Grid.Column="1" Width="150" HorizontalAlignment="Left" Margin="0,5" Text="{Binding Cpf}"/>
+
+                <TextBlock Text="Endereço:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,5,5,5"/>
+                <TextBox Grid.Row="2" IsEnabled="{Binding FormularioHabilitado}" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,5" Text="{Binding Endereco}"/>
+            </Grid>
+        </GroupBox>
+
+        <!-- SEÇÃO 3: BOTÕES DE AÇÃO -->
+            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,6,5">
+                <Button Content="Incluir" Width="70" Height="25" Margin="5" Click="BtnIncluir_Click"/>
+                <Button Content="Salvar" Width="70" Height="25" Margin="5" Click="BtnSalvar_Click"/>
+                <Button Content="Editar" Width="70" Height="25" Margin="5" Click="BtnEditar_Click"/>
+                <Button Content="Excluir" Width="70" Height="25" Margin="5" Click="BtnExcluir_Click"/>
+            </StackPanel>
+
+        <!-- SEÇÃO 4: GRID DE PESSOAS -->
+        <DataGrid x:Name="GridPessoas" Grid.Row="2" ItemsSource="{Binding Pessoas}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="*"/>
+                <DataGridTextColumn Header="CPF" Binding="{Binding Cpf}" Width="130"/>
+                <DataGridTextColumn Header="Endereço" Binding="{Binding Endereco}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

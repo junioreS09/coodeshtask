@@ -8,5 +8,18 @@ namespace WpfApp
         {
             InitializeComponent();
         }
+        private void BtnPessoas_Click(object sender, RoutedEventArgs e)
+        {
+            var pessoaView = new Views.PessoaView();
+            pessoaView.ShowDialog();
+        }
+        private void BtnProdutos_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Funcionalidade de Produtos ainda não implementada.");
+        }
+        private void BtnPedidos_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Funcionalidade de Pedidos ainda não implementada."); 
+        }
     }
 }

@@ -3,6 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,6,5">
+            <Button Content="Pessoas" Width="70" Height="25" Margin="5" Click="BtnPessoas_Click"/>
+            <Button Content="Produtos" Width="70" Height="25" Margin="5" Click="BtnProdutos_Click"/>
+            <Button Content="Pedidos" Width="70" Height="25" Margin="5" Click="BtnPedidos_Click"/>
+         </StackPanel>
 
     </Grid>
 </Window>
