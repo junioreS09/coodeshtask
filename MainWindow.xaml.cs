@@ -10,7 +10,10 @@ namespace WpfApp
         }
         private void BtnPessoas_Click(object sender, RoutedEventArgs e)
         {
-            var pessoaView = new Views.PessoaView();
+            var pessoaView = new Views.PessoaView()
+            {
+                Owner = this // Define a janela atual como dona da nova janela
+            };
             pessoaView.ShowDialog();
         }
         private void BtnProdutos_Click(object sender, RoutedEventArgs e)
