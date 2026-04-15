@@ -12,13 +12,17 @@ namespace WpfApp
         {
             var pessoaView = new Views.PessoaView()
             {
-                Owner = this // Define a janela atual como dona da nova janela
+                Owner = this 
             };
             pessoaView.ShowDialog();
         }
         private void BtnProdutos_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Funcionalidade de Produtos ainda não implementada.");
+            var produtoView = new Views.ProdutoView()
+            {
+                Owner = this              
+            };
+            produtoView.ShowDialog();
         }
         private void BtnPedidos_Click(object sender, RoutedEventArgs e)
         {
