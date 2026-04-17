@@ -24,6 +24,12 @@ namespace WpfApp.Views
                 MessageBox.Show("CPF inválido. Por favor, insira um CPF válido.", "Erro de Validação", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+
+            if (string.IsNullOrWhiteSpace(_viewModel.Nome))
+            {
+                MessageBox.Show("O nome é obrigatório. Por favor, insira um nome.", "Erro de Validação", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             _viewModel.Salvar();
             MessageBox.Show("Pessoa salva com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
         }
@@ -35,10 +41,12 @@ namespace WpfApp.Views
                 MessageBox.Show("Salve a pessoa antes de incluir um pedido.", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            MessageBox.Show("Tela de pedidos em desenvolvimento.", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
-            // var tela = new PedidoView(_viewModel.Id);
-            // tela.ShowDialog();
-            // _viewModel.CarregarPedidos();
+            var tela = new PedidoView(_viewModel.Id)
+            {
+                Owner = this
+            };
+            tela.ShowDialog();
+            _viewModel.CarregarPedidos();
         }
 
         private void FiltroStatus_Checked(object sender, RoutedEventArgs e)

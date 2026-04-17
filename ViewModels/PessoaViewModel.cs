@@ -7,10 +7,12 @@ namespace WpfApp.ViewModels
     public class PessoaViewModel : ViewModelBase
     {
         private readonly PessoaService _service;
+        private readonly PedidoService _pedidoService;
 
         public PessoaViewModel()
         {
             _service = new PessoaService();
+            _pedidoService = new PedidoService();
             Pessoas = new ObservableCollection<Pessoa>();
         }
 
@@ -39,6 +41,11 @@ namespace WpfApp.ViewModels
         {
             var resultados = _service.Buscar(NomeFiltro, CpfFiltro);
             Pessoas = new ObservableCollection<Pessoa>(resultados);
+        }
+
+        public bool PossuiPedidos(int id)
+        {
+            return _pedidoService.ObterPorPessoa(id).Count > 0;
         }
 
         public void Excluir(int id)

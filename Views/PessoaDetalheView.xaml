@@ -3,11 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:helpers="clr-namespace:WpfApp.Helpers"
         mc:Ignorable="d"
         Title="Detalhe da Pessoa" Height="600" Width="900"
         WindowStartupLocation="CenterOwner">
 
     <Window.Resources>
+        <helpers:StatusParaVisibilidadeConverter x:Key="StatusConverter"/>
         <Style TargetType="Button">
             <Setter Property="Background" Value="#0f3460"/>
             <Setter Property="Foreground" Value="White"/>
@@ -131,18 +133,21 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Data" Binding="{Binding DataVenda, StringFormat=dd/MM/yyyy}" Width="90"/>
                     <DataGridTextColumn Header="Valor Total" Binding="{Binding ValorTotal, StringFormat=C}" Width="110"/>
-                    <DataGridTextColumn Header="Pagamento" Binding="{Binding FormaPagamento}" Width="110"/>
+                    <DataGridTextColumn Header="Pagamento" Binding="{Binding FormaPagamentoCompleto}" Width="130"/>
                     <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="90"/>
                     <DataGridTemplateColumn Header="Ações" Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <Button Content="Pago" Width="60" Margin="2" Padding="4,3"
-                                            Background="#0f8a5f" Click="BtnPago_Click"/>
+                                            Background="#0f8a5f" Click="BtnPago_Click"
+                                            Visibility="{Binding Status, Converter={StaticResource StatusConverter}, ConverterParameter=Pendente}"/>
                                     <Button Content="Enviado" Width="68" Margin="2" Padding="4,3"
-                                            Background="#e8a020" Click="BtnEnviado_Click"/>
+                                            Background="#e8a020" Click="BtnEnviado_Click"
+                                            Visibility="{Binding Status, Converter={StaticResource StatusConverter}, ConverterParameter=Pago}"/>
                                     <Button Content="Recebido" Width="75" Margin="2" Padding="4,3"
-                                            Background="#0f3460" Click="BtnRecebido_Click"/>
+                                            Background="#0f3460" Click="BtnRecebido_Click"
+                                            Visibility="{Binding Status, Converter={StaticResource StatusConverter}, ConverterParameter=Enviado}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

@@ -26,7 +26,11 @@ namespace WpfApp
         }
         private void BtnPedidos_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Funcionalidade de Pedidos ainda não implementada."); 
+            var pedidoView = new Views.PedidoView()
+            {
+                Owner = this
+            };
+            pedidoView.ShowDialog();
         }
     }
 }

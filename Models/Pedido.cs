@@ -11,7 +11,11 @@ namespace WpfApp.Models
         public decimal ValorTotal { get; set; }
         public DateTime DataVenda { get; set; }
         public string FormaPagamento { get; set; }
+        public int Parcelas { get; set; }
         public string Status { get; set; }
+
+        public string FormaPagamentoCompleto =>
+            Parcelas > 1 ? $"{FormaPagamento} {Parcelas}x" : FormaPagamento;
 
         public Pedido()
         {

@@ -31,6 +31,12 @@ namespace WpfApp.Views
 
         private void BtnSalvar_Click(object sender, RoutedEventArgs e)
         {
+            if (_viewModel.Valor == null || string.IsNullOrWhiteSpace(_viewModel.Nome) || string.IsNullOrWhiteSpace(_viewModel.Codigo))
+            {
+                MessageBox.Show("Todos os campos são obrigatórios. Por favor, preencha todos os campos.", "Erro de Validação", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (_viewModel.ModoEdicao)
                 _viewModel.Atualizar();
             else

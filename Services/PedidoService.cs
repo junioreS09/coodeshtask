@@ -42,5 +42,16 @@ namespace WpfApp.Services
                 File.WriteAllText(CaminhoArquivo, JsonConvert.SerializeObject(lista, Formatting.Indented));
             }
         }
+
+        public void Excluir(int id)
+        {
+            var lista = ObterTodos();
+            var pedido = lista.FirstOrDefault(p => p.Id == id);
+            if (pedido != null && pedido.Status == "Pendente")
+            {
+                lista.Remove(pedido);
+                File.WriteAllText(CaminhoArquivo, JsonConvert.SerializeObject(lista, Formatting.Indented));
+            }
+        }
     }
 }
