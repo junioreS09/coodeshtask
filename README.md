@@ -1,26 +1,32 @@
-# Project Empty Template
+# Sistema de Gestão de Vendas
 
-Este é um repositório de exemplo para você começar a desenvolver a questão, leia com atenção os requisitos do enunciado da questão na plataforma e seguia as boas práticas sobre como utilizar este repositório.
+Aplicação desktop para gerenciamento de pessoas, produtos e pedidos, com persistência em JSON e interface em tema escuro.
 
+## Tecnologias
 
-## Readme do Repositório
+- C# / .NET Framework 4.6
+- WPF (Windows Presentation Foundation)
+- Padrão MVVM
+- Newtonsoft.Json
+- LINQ
 
-- Deve conter o título do projeto
-- Uma descrição sobre o projeto em frase
-- Deve conter uma lista com linguagem, framework e/ou tecnologias usadas
-- Como instalar e usar o projeto (instruções)
-- Não esqueça o [.gitignore](https://www.toptal.com/developers/gitignore)
-- Se está usando github pessoal, referencie que é um challenge by coodesh:  
+### Pré-requisitos
 
->  This is a challenge by [Coodesh](https://coodesh.com/)
+- Windows 10 ou superior
+- .NET Framework 4.6 instalado
+- Visual Studio 2019 ou superior
 
-## Finalização e Instruções para a Apresentação
+### Instalação
 
-1. Adicione o link do repositório com a sua solução na questão na plataforma
-2. Verifique se o Readme está bom e faça o commit final em seu repositório;
-3. Envie e aguarde as instruções para seguir. Caso o teste tenha apresentação de vídeo, dentro da tela de entrega será possível gravar após adicionar o link do repositório. Sucesso e boa sorte. =)
+1. Clone o repositório: git clone https://github.com/junioreS09/coodeshtask
+2. Abra o arquivo "WpfApp.sln" no Visual Studio
+3. Restaure os pacotes NuGet (clique com o botão direito na solução → *Restore NuGet Packages*)
+4. Compile e execute ("F5")
 
+### Uso
 
-## Suporte
+- **Pessoas** — cadastre clientes com nome, CPF e endereço
+- **Produtos** — cadastre produtos com nome, código e valor
+- **Pedidos** — crie pedidos vinculados a uma pessoa, adicione produtos, selecione forma de pagamento e parcelamento
 
-Para tirar dúvidas sobre o processo envie uma mensagem diretamente a um especialista no chat da plataforma. 
+Os dados são salvos automaticamente em arquivos JSON na pasta "Data/" gerada na raiz do executável.
